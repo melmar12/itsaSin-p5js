@@ -1,23 +1,36 @@
-function drawCircle(x,y,d) {
-  stroke(0);
-  noFill();
-  ellipse(x,y,d,d);
-  if (d > 3) {
-    drawCircle(x-d/2, y, d/2);
-    drawCircle(x+d/2, y, d/2);
-    drawCircle(x, y+d/2, d/2);
-  }
-}
+var k = 5 / 8;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-
+    createCanvas(800, 800);
 }
 
 function draw() {
-  background(255);
-  drawCircle(width/2, height/2, 300);
+  background(51);
+  translate(width/2, height/2);
+
+  beginShape();
+  for (var a = 0; a < TWO_PI * 9; a += 0.02) {
+    var r = 200 * cos(a*k);
+    var x = r * cos(a);
+    var y = r * sin(a);
+    stroke(255);
+    noFill();
+    strokeWeight(1);
+    vertex(x, y);
+  }
+  endShape();
 }
+
+
+
+
+
+
+
+
+
+
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
