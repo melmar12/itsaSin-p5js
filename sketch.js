@@ -1,37 +1,49 @@
-var k = 5 / 8;
+var angle = PI/4;
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(51);
-  translate(width/2, height/2);
-
-  beginShape();
-  for (var a = 0; a < TWO_PI * 9; a += 0.02) {
-    var r = 200 * cos(a*k);
-    var x = r * cos(a);
-    var y = r * sin(a);
-    stroke(255);
-    noFill();
-    strokeWeight(1);
-    vertex(x, y);
+  background(0);
+  loadPixels();
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var index = (x + y * width)*4;
+      pixels[index+0] = y-250;
+      pixels[index+1] = 60;
+      pixels[index+2] = 130;
+    }
   }
-  endShape();
+  updatePixels();
+
+  var len = 100;
+  stroke(255);
+  translate(width*.8, height);
+  branch(100);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function branch(len) {
+  line(0, 0, 0, -len);
+  translate(0, -len);
+
+  if (len > 4) {
+    push();
+    rotate(PI/4);
+    branch(len*0.67);
+    pop();
+    push();
+    rotate(-PI/12);
+    branch(len*0.67);
+    pop();
+  }
+  if (len = 4) {
+    stroke(255, 247, 102, 100);
+    line(0, 0, 0, -len);
+  }
+
 }
