@@ -20,7 +20,7 @@ function draw() {
 
   var len = 100;
   stroke(255,255,255,100);
-  translate(width*.8, height);
+  translate(width*.85, height);
   branch(100);
 }
 
@@ -43,7 +43,7 @@ function branch(len) {
     pop();
   }
   if (len = 4) {
-    stroke(255, 247, 102, 80);
+    stroke(255, 255, 255, 80);
     line(0, 0, 0, -len);
   }
 
