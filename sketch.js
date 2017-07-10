@@ -5,7 +5,8 @@ function setup() {
 }
 
 function draw() {
-  background(0,20,45);
+  clear();
+  //background(0,20,45);
   // //gradient
   // loadPixels();
   // for (var y = 0; y < height; y++) {
@@ -38,7 +39,7 @@ function branch(len) {
     branch(len*0.67);
     pop();
     push();
-    rotate(-PI/12);
+    rotate(-PI/4); // change angle of branches
     branch(len*0.67);
     pop();
   }
